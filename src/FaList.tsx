@@ -1,84 +1,187 @@
 import React from "react";
 import { Section, TextIcon } from "./FaCmp";
-import {CollisionTypeVehicleVsVehicle} from "./library";
+import {
+  CollisionTypeVehicleVsVehicle,
+  CollisionTypeVehicleVsPedestrian,
+  CollisionTypeVehicleVsCyclists,
+  CollisionTypeVehicleVsObject,
+  CollisionTypeVehicleVsCommercial,
+  CollisionTypeVehicleSelf,
+  CollisionTypeVehicleVsUnknown,
+  CollisionDamageThreshold,
+  CollisionSchoolZone,
+  CollisionSchoolBus,
+  CollisionHitRun,
+  CollisionInjurySeverity,
+  CollisionInjuryFatality,
+  CollisionInjurySevere,
+  CollisionInjuryMinor,
+  CollisionInjuryNoInjury,
+  CollisionInjuryUnknown,
+  CollisionWeatherBlowingSandDirtSnow,
+  CollisionWeatherBlowingSnow,
+  CollisionWeatherClear,
+  CollisionWeatherFogSmoke,
+  CollisionWeatherOvercast,
+  CollisionWeatherRaining,
+  CollisionWeatherSevereCrosswinds,
+  CollisionWeatherHailFreezingRain,
+  CollisionWeatherSnowing,
+  CollisionWeatherUnknown,
+  CollisionLightingDaylight,
+  CollisionLightingDarkNoStreetLights,
+  CollisionLightingDawn,
+  CollisionLightingDusk,
+  CollisionLightingStreetsLightsOff,
+  CollisionLightingStreetsLightsOn,
+  CollisionCityStreet,
+  CollisionCountryRoad,
+  CollisionStateRoad,
+  CollisionMiscRoad,
+  CollisionStatePatrol,
+  CollisionCountySheriff,
+  CollisionCityMunicipalPolice,
+  CollisionOtherLawEnforcement,
+  CollisionNoLawEnforcement,
+  CollisionObjectStruck,
+  CollisionObjectStruckRocksDitch,
+  CollisionObjectStruckSign,
+  CollisionObjectStruckBroadcastTower,
+  CollisionObjectStruckTrafficLight,
+  CollisionObjectStruckTruckDebris,
+  CollisionObjectStruckStructure,
+  CollisionBlockNumber,
+  CollisionMilepost,
+  CollisionPrimaryTrafficway,
+  CollisionSecondaryTrafficway,
+  CollisionParticipantRole,
+  CollisionRegisteredOwner,
+  CollisionDriver,
+  CollisionPassenger,
+  CollisionCyclist,
+  CollisionPedestrian,
+  CollisionPropertyOwner,
+  CollisionUnknown,
+  CollisionIndividualTag,
+  CollisionTrash, 
+  CollisionTrashRestoreAlt,
+  CollisionArchive,
+  CollisionHistory,
+  CollisionBalance,
+  CollisionGem,
+  CollisionHeart,
+  CollisionLemon,
+  CollisionIDICoreFetch,
+  CollisionLoveParticipant,
+  CollisionMehParticipant,
+  CollisionSadParticipant,
+  CollisionAutomatedCommunications,
+  CollisionUrgentContact,
+  CollisionPriorityContact,
+  CollisionNormalContact,
+  CollisionUnlinkParticipants,
+  CollisionLinkParticipant,
+  CollisionLockSettings,
+  CollisionNextParticipant,
+  CollisionPreviousParticipant,
+  CollisionTag,
+  CollisionStopAllRobotCommunications,
+  CollisionStartAllRobotCommunications,
+  CollisionPauseAllRobotCommunications,
+  CollisionBookmark,
+  CollisionViewBookmarks,
+  CollisionSaveParticipant,
+  CollisionMakeNote,
+  CollisionSMSParticipant,
+  CollisionCallParticipant,
+  CollisionVoicemailParticipant,
+  CollisionEmailParticipant,
+  CollisionEmailOpenedParticipant,
+  CollisionMenuViewExpenses,
+  CollisionMenuStatistics,
+  CollisionMenuBack,
+  CollisionMenuSearch,
+  CollisionMenuSetDateNow,
+  CollisionParticipantRelationship
+  } from "./library";
 
 export function FaList() {
   return (
     <>
         <Section
-        title={"Collision types"}
+        title={"Collision Types"}
         description={"The following are types of collisions."}
         >
 
         <TextIcon
           tooltipDescription={
-            "Collision type: vehicle vs vehicle"
+            "Vehicle vs vehicle"
           }
-          /* This is to highlight a collision where commercial, city bus, school, vehicles are not involved. This category will not be perfect as the     identification of businesses in the collision will require further first and last name processing. */
-          icons={CollisionTypeVehicleVsVehicle} // EXAMPLE OF PROPER ICON USAGE
+          /* This is to highlight a collision where commercial, city bus, school, vehicles are not involved. This category will not be perfect as the identification of businesses in the collision will require further first and last name processing. */
+          icons={CollisionTypeVehicleVsVehicle} 
         />
         <TextIcon
           tooltipDescription={
-            "Collision type of pedestrian vs vehicle"
+            "Vehicle vs pedestrian"
           }
-          icons={["running", "car-crash"]}
+          icons={CollisionTypeVehicleVsPedestrian}
         />
         <TextIcon
           tooltipDescription={
-            "Collision type: pedal/cyclist vs vehicle"
+            "Vehicle vs cyclist"
           }
-          icons={["bicycle","car-crash"]}
+          icons={CollisionTypeVehicleVsCyclists}
         />
         <TextIcon
           tooltipDescription={
-            "Collision type: vehicle vs object."
+            "Vehicle vs object"
           }
           /* For one vehicle and object collision field populated. */
-          icons={["tree","car-crash"]}
+          icons={CollisionTypeVehicleVsObject}
         />
 
         <TextIcon
           tooltipDescription={
-            "Collision type: vehicle vs commercial vehicle"
+            "Vehicle vs commercial vehicle"
           }
-          icons={["truck-moving","car-crash"]}
+          icons={CollisionTypeVehicleVsCommercial}
         />
 
         <TextIcon
           tooltipDescription={
-            "Collision type: one driver/individual collision"
+            "Single vehicle collision"
           }
           /* Not to be overlapped with object collision. Common scenarios are collisions with one driver unknown, suspect, none where the true count was computed to be one actual driver for our purpose. */
-          icons={["dice-one","car-crash"]}
+          icons={CollisionTypeVehicleSelf}
         />
 
         <TextIcon
           tooltipDescription={
-            "Collision type: vehicle vs unknown."
+            "Vehicle vs unknown"
           }
           /* To include any collision with an unknown, missing, none party in the individual section. */
-          icons={["question-circle","car-crash"]}
+          icons={CollisionTypeVehicleVsUnknown}
         />
 
         <TextIcon
           tooltipDescription={
-            "Collision property damage threshold exceeded $700"
+            "Collision damage threshold exceeded $700"
           }
-          icons={["money-bill-alt","car-crash"]}
+          icons={CollisionDamageThreshold}
         />
 
         <TextIcon
           tooltipDescription={
             "Collision occurred within a school zone"
           }
-          icons={["school","car-crash"]}
+          icons={CollisionSchoolZone}
         />
 
         <TextIcon
           tooltipDescription={
             "Collision involved a school bus"
           }
-          icons={["bus","car-crash"]}
+          icons={CollisionSchoolBus}
         />
 
         <TextIcon
@@ -86,170 +189,163 @@ export function FaList() {
             "Collision involved a hit & run"
           }
           /* The runner is on the right side of the car crash icon. */
-          icons={["car-crash", "running"]}
+          icons={CollisionHitRun}
         />
 
         </Section>
 
         <Section
         title={"Injury severity of the collision."}
-        description={"Collision's injury severity is one of the most important features of a collision."}
+        description={"The categorization of injury severity of the collision."}
         >
 
         <TextIcon
           tooltipDescription={
-            "Collision injury severity"
+            "Injury Severity"
           }
-          icons={"user-injured"}
+          icons={CollisionInjurySeverity}
         />
 
         <TextIcon
           tooltipDescription={
-            "A fatality were reported"
+            "Injury Fatality"
           }
-          icons={"skull-crossbones"}
+          icons={CollisionInjuryFatality}
         />
 
         <TextIcon
           tooltipDescription={
-            "Severe injury were reported"
+            "Injury Severe"
           }
-          icons={"ambulance"}
+          icons={CollisionInjurySevere}
         />
 
         <TextIcon
           tooltipDescription={
-            "Minor injuries were reported"
+            "Injury Minor"
           }
-          icons={"band-aid"}
+          icons={CollisionInjuryMinor}
         />
 
         <TextIcon
           tooltipDescription={
             "No injuries were reported"
           }
-          icons={"heartbeat"}
+          icons={CollisionInjuryNoInjury}
         />
 
         <TextIcon
           tooltipDescription={
             "Injuries are unknown"
           }
-          icons={"question-circle"}
+          icons={CollisionInjuryUnknown}
         />
 
         </Section>
 
         <Section
-        title={"Weather (addition collision properties)"}
-        description={"Additional collision properties of less importance but can provide invaluable context."}
+        title={"Weather"}
+        description={"Weather conditions at the time of the collision."}
         >
 
         <TextIcon
           tooltipDescription={
-            "Blowing sand, dirt, snow"
+            "Weather Blowing sand, dirt, snow."
           }
-          icons={"wind"}
+          icons={CollisionWeatherBlowingSandDirtSnow}
         />
         <TextIcon
           tooltipDescription={
-            "Blowing snow"
+            "Weather Blowing snow"
           }
-          icons={["wind","snowflake"]}
+          icons={CollisionWeatherBlowingSnow}
         />
 
         <TextIcon
           tooltipDescription={
-            "Clear"
+            "Weather Clear"
           }
-          icons={"rainbow"}
+          icons={CollisionWeatherClear}
         />
 
         <TextIcon
           tooltipDescription={
             "Fog or smog or smoke"
           }
-          icons={"smog"}
+          icons={CollisionWeatherFogSmoke}
         />
 
         <TextIcon
           tooltipDescription={"Overcast, partly cloudy"}
-          icons={"cloud-sun"}
+          icons={CollisionWeatherOvercast}
         />
 
         <TextIcon
           tooltipDescription={"Raining"}
-          icons={"cloud-rain"}
+          icons={CollisionWeatherRaining}
         />
 
         <TextIcon
           tooltipDescription={"Severe crosswinds"
         } /* Two winds with one mirrored the other */
-          icons={["wind","wind"]}
+          icons={CollisionWeatherSevereCrosswinds}
         />
 
         <TextIcon
           tooltipDescription={"Sleet or hail or freezing rain"}
-          icons={["cloud-showers-heavy","snowflake"]}
+          icons={CollisionWeatherHailFreezingRain}
         />
 
         <TextIcon
           tooltipDescription={"Snowing"}
-          icons={"snowflake"}
+          icons={CollisionWeatherSnowing}
         />
 
       <TextIcon
           tooltipDescription={"Unknown weather"}
-          icons={["umbrella","question-circle"]}
+          icons={CollisionWeatherUnknown}
         />
 
       </Section>
 
         <Section
-          title={"Lighting condition (additional collision properties)"}
-          description={"First icon is the normal version of the lightbulb."}
+          title={"Lighting Condition"}
+          description={"Lighting conditions at the time of the accident."}
         >
 
         <TextIcon
           tooltipDescription={
             "Daylight"
           }
-          icons={["lightbulb", "sun"]}
-        />
-
-        <TextIcon
-          tooltipDescription={
-            "Daylight"
-          }
-          icons={["lightbulb", "sun"]}
+          icons={CollisionLightingDaylight}
         />
 
         <TextIcon
           tooltipDescription={
             "Dark - no street lights"
           }
-          icons={["lightbulb", "moon", "road"]}
+          icons={CollisionLightingDarkNoStreetLights}
         />
 
         <TextIcon
           tooltipDescription={
             "Dawn"
           }
-          icons={["lightbulb", "coffee"]}
+          icons={CollisionLightingDawn}
         />
 
         <TextIcon
           tooltipDescription={
             "Dusk"
           }
-          icons={["lightbulb", "glass-martini"]}
+          icons={CollisionLightingDusk}
         />
 
         <TextIcon
           tooltipDescription={
             "Dark streets light off"
           }
-          icons={["lightbulb", "road", "lightbulb"]}
+          icons={CollisionLightingStreetsLightsOff}
         />
 
       <TextIcon
@@ -257,14 +353,7 @@ export function FaList() {
             "Dark street light on"
           }
           /* alternating solid and regular lightbulb */
-          icons={["lightbulb", "road", "lightbulb"]}
-        />
-
-        <TextIcon
-          tooltipDescription={
-            "Dark unknown lighting"
-          }
-          icons={["lightbulb", "question-circle"]}
+          icons={CollisionLightingStreetsLightsOn}
         />
 
       </Section>
@@ -278,97 +367,110 @@ export function FaList() {
           tooltipDescription={
             "City street"
           }
-          icons={["city","road"]}
+          icons={CollisionCityStreet}
         />
         <TextIcon
           tooltipDescription={
             "Country road"
           }
-          icons={["truck-monster","road"]}
+          icons={CollisionCountryRoad}
         />
         <TextIcon
           tooltipDescription={"State road"}
-          icons={["flag-usa","road"]}
+          icons={CollisionStateRoad}
         />
 
         <TextIcon
           tooltipDescription={"Misc trafficway"}
-          icons={"road"}
+          icons={CollisionMiscRoad}
         />
 
         <TextIcon
           tooltipDescription={"State patrol"}
-          icons={["flag-usa","shield-alt"]}
+          icons={CollisionStatePatrol}
         />
 
         <TextIcon
           tooltipDescription={"County sheriff"}
-          icons={["truck-monster","shield-alt"]}
+          icons={CollisionCountySheriff}
         />
 
         <TextIcon
           tooltipDescription={"City/municipal police"}
-          icons={["city","shield-alt"]}
+          icons={CollisionCityMunicipalPolice}
         />
 
         <TextIcon
           tooltipDescription={"Other law enforcement"}
-          icons={["question-circle","shield-alt"]}
+          icons={CollisionOtherLawEnforcement}
         />
 
         <TextIcon
           tooltipDescription={"No law enforcement"}
-          icons={["ban","shield-alt"]}
+          icons={CollisionNoLawEnforcement}
         />
 
         <TextIcon
           tooltipDescription={"Object struck"}
-          icons={["car-crash","tree"]}
+          icons={CollisionObjectStruck}
         />
 
         <TextIcon
           tooltipDescription={"Object struck rocks/ditch"}
-          icons={"mountain"}
+          icons={CollisionObjectStruckRocksDitch}
         />
 
         <TextIcon
           tooltipDescription={"Objects struck sign"}
-          icons={"sign"}
+          icons={CollisionObjectStruckSign}
         />
 
         <TextIcon
           tooltipDescription={"Objects struck tower"}
-          icons={"broadcast-tower"}
+          icons={CollisionObjectStruckBroadcastTower}
         />
 
         <TextIcon
-          tooltipDescription={"Other objects struck: tree, light, truck debris, structure"}
-          icons={["broadcast-tower", "traffic-light", "truck-loading", "monument"]}
+          tooltipDescription={"Objects struck traffic light"}
+          icons={CollisionObjectStruckTrafficLight}
         />
+
+        <TextIcon
+          tooltipDescription={"Objects struck truck debris"}
+          icons={CollisionObjectStruckTruckDebris}
+        />
+
+        <TextIcon
+          tooltipDescription={"Objects struck structure"}
+          icons={CollisionObjectStruckStructure}
+        />
+
+
 
         <TextIcon
           tooltipDescription={"Block number"}
-          icons={"cube"}
+          icons={CollisionBlockNumber}
         />
         <TextIcon
           tooltipDescription={"Milepost"}
-          icons={"sign"}
+          icons={CollisionMilepost}
         />
 
         <TextIcon
+          /* use a number one and number 2 before the road for primary and secondary */
           tooltipDescription={"Primary trafficway"}
-          icons={["1","road"]}
+          icons={CollisionPrimaryTrafficway}
         />
 
         <TextIcon
           tooltipDescription={"Secondary trafficway"}
-          icons={["2","road"]}
+          icons={CollisionSecondaryTrafficway}
         />
 
       </Section>
 
       <Section
-        title={"Individual (collision participant) properties"}
+        title={"Collision participant properties"}
         description={"Individual roles, individual tags, individual contact information"}
       >
 
@@ -376,64 +478,64 @@ export function FaList() {
           tooltipDescription={
             "Collision participant role"
           }
-          icons={["user","car-crash"]}
+          icons={CollisionParticipantRole}
         />
 
         <TextIcon
           tooltipDescription={
             '"Registered owner"'
           }
-          icons={["id-badge","car"]}
+          icons={CollisionRegisteredOwner}
         />
-
+  
         <TextIcon
           tooltipDescription={
             "Driver"
           }
           /* Highlight driver icon */
-          icons={["id-card","car"]}
+          icons={CollisionDriver}
         />
 
         <TextIcon
           tooltipDescription={
             "Passenger"
           }
-          icons={"male"}
+          icons={CollisionPassenger}
         />
 
       <TextIcon
           tooltipDescription={
             "Cyclist"
           }
-          icons={"bicycle"}
+          icons={CollisionCyclist}
         />
 
       <TextIcon
           tooltipDescription={
             "Pedestrian"
           }
-          icons={"running"}
+          icons={CollisionPedestrian}
         />
 
       <TextIcon
           tooltipDescription={
             "Property owner"
           }
-          icons={"house-user"}
+          icons={CollisionPropertyOwner}
         />
 
       <TextIcon
           tooltipDescription={
             "Unknown"
           }
-          icons={"question-circle"}
+          icons={CollisionUnknown}
         />
 
       <TextIcon
           tooltipDescription={
             "Individual tag"
           }
-          icons={"user-tag"}
+          icons={CollisionIndividualTag}
         />
       </Section>
 
@@ -446,267 +548,274 @@ export function FaList() {
           tooltipDescription={
             "Remove collisions from search"
           }
-          icons={"trash-alt"}
+          icons={CollisionTrash}
         />
         <TextIcon
           tooltipDescription={
             "Restore collision to search"
           }
-          icons={"trash-restore-alt"}
+          icons={CollisionTrashRestoreAlt}
         />
         <TextIcon
           tooltipDescription={
             "Archive collision"
           }
-          icons={"archive"}
+          icons={CollisionArchive}
         />
         <TextIcon
           tooltipDescription={
             "History collisions"
           }
-          icons={["history","glasses"]}
+          icons={CollisionHistory}
         />
         <TextIcon
           tooltipDescription={
             "Legal case rating"
           }
-          icons={"balance-scale"}
+          icons={CollisionBalance}
         />
         <TextIcon
           tooltipDescription={
             "Valuable legal case"
           }
-          icons={"gem"}
+          icons={CollisionGem}
         />
         <TextIcon
           tooltipDescription={
             "Interesting legal case"
           }
-          icons={"heart"}
+          icons={CollisionHeart}
         />
 
         <TextIcon
           tooltipDescription={
             "Uninteresting legal case"
           }
-          icons={"lemon"}
+          icons={CollisionLemon}
         />
 
         <TextIcon
           tooltipDescription={
             "IDI Core fetch"
           }
-          icons={"money-bill-alt"}
+          icons={CollisionIDICoreFetch}
         />
 
         <TextIcon
           tooltipDescription={
             "Love collision participant"
           }
-          icons={"grin-hearts"}
+          icons={CollisionLoveParticipant}
         />
 
         <TextIcon
           tooltipDescription={
             "Meh collision participant"
           }
-          icons={"meh"}
+          icons={CollisionMehParticipant}
         />
 
         <TextIcon
           tooltipDescription={
             "Uninteresting collision participant"
           }
-          icons={"sad-tear"}
+          icons={CollisionSadParticipant}
         />
 
         <TextIcon
           tooltipDescription={
             "Robot (automated communications)"
           }
-          icons={"robot"}
+          icons={CollisionAutomatedCommunications}
         />
 
         <TextIcon
           tooltipDescription={
             "Urgent contact"
           }
-          icons={"star"}
+          icons={CollisionUrgentContact}
         />
 
         <TextIcon
           tooltipDescription={
             "Priority contact"
           }
-          icons={"star-half-alt"}
+          icons={CollisionPriorityContact}
         />
 
         <TextIcon
           tooltipDescription={
             "Contact normal time=frame"
           }
-          icons={"star-half"}
+          icons={CollisionNormalContact}
         />
 
         <TextIcon
           tooltipDescription={
             "Unlink individual from collision"
           }
-          icons={"unlink"}
+          icons={CollisionUnlinkParticipants}
         />
 
         <TextIcon
           tooltipDescription={
             "Link individual to collision"
           }
-          icons={"link"}
+          icons={CollisionLinkParticipant}
         />
 
         <TextIcon
           tooltipDescription={
             "Lock settings"
           }
-          icons={"lock"}
+          icons={CollisionLockSettings}
         />
 
         <TextIcon
           tooltipDescription={
             "Next individual"
           }
-          icons={"user-plus"}
+          icons={CollisionNextParticipant}
         />
 
         <TextIcon
           tooltipDescription={
             "Previous individual"
           }
-          icons={"user-minus"}
+          icons={CollisionPreviousParticipant}
         />
 
         <TextIcon
           tooltipDescription={
             "Tag collision"
           }
-          icons={"tag"}
-        />
-
-        <TextIcon
-          tooltipDescription={
-            "Stop all robot communications"
-          }
-          icons={"stop-circle"}
+          icons={CollisionTag}
         />
 
         <TextIcon
           tooltipDescription={
             "Start all robot communications"
           }
-          icons={"play-circle"}
+          icons={CollisionStartAllRobotCommunications}
+        />
+
+        <TextIcon
+          tooltipDescription={
+            "Pause all robot communications"
+          }
+          icons={CollisionPauseAllRobotCommunications}
+        />
+
+        <TextIcon
+          tooltipDescription={
+            "Stop all robot communications"
+          }
+          icons={CollisionStopAllRobotCommunications}
         />
 
         <TextIcon
           tooltipDescription={
             "Bookmark collision"
           }
-          icons={"bookmark"}
+          icons={CollisionBookmark}
         />
 
         <TextIcon
         tooltipDescription={
           "View all bookmarks"
         }
-        icons={"book"}
+        icons={CollisionViewBookmarks}
         />
 
         <TextIcon
         tooltipDescription={
           "Save individual"
         }
-        icons={"paperclip"}
+        icons={CollisionSaveParticipant}
         />
 
       <TextIcon
         tooltipDescription={
           "Make note"
         }
-        icons={"sticky-note"}
+        icons={CollisionMakeNote}
         />
 
         <TextIcon
         tooltipDescription={
           "SMS individual"
         }
-        icons={"sms"}
+        icons={CollisionSMSParticipant}
         />
 
         <TextIcon
         tooltipDescription={
           "Call individual"
         }
-        icons={"mobile"}
+        icons={CollisionCallParticipant}
         />
 
         <TextIcon
         tooltipDescription={
           "Voicemail"
         }
-        icons={"voicemail"}
+        icons={CollisionVoicemailParticipant}
         />
 
         <TextIcon
         tooltipDescription={
           "Email individual"
         }
-        icons={"envelope"}
+        icons={CollisionEmailParticipant}
         />
 
         <TextIcon
         tooltipDescription={
           "Email opened"
         }
-        icons={"envelope-open-text"}
+        icons={CollisionEmailOpenedParticipant}
         />
 
         <TextIcon
         tooltipDescription={
           "View IDI core / Twilio expenses"
         }
-        icons={"credit-card"}
+        icons={CollisionMenuViewExpenses}
         />
 
         <TextIcon
         tooltipDescription={
           "View collision / participants statistics"
         }
-        icons={"chart-line"}
+        icons={CollisionMenuStatistics}
         />
 
         <TextIcon
         tooltipDescription={
           "Back"
         }
-        icons={"backspace"}
+        icons={CollisionMenuBack}
         />
 
         <TextIcon
         tooltipDescription={
           "Search"
         }
-        icons={"search"}
+        icons={CollisionMenuSearch}
         />
 
       <TextIcon
         tooltipDescription={
           "Set ending date to now"
         }
-        icons={"infinity"}
+        icons={CollisionMenuSetDateNow}
         />
 
       <TextIcon
         tooltipDescription={
           "Possible individual relationship"
         }
-        icons={"couch"}
+        icons={CollisionParticipantRelationship}
         /> 
 
       </Section>
